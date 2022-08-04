@@ -10,6 +10,23 @@
   </head>
 
   <body>
+    <!-- ページ上部にメニューが出るように設定 -->
+    <header>
+      <nav>
+        <% if user_signed_in? %>
+          <%= link_to t('views.common.title_top', name: Book.model_name.human), books_path %>
+          <%= link_to t('views.common.title_top', name: User.model_name.human), users_path %>
+          <%= link_to t('views.common.log_out'), destroy_user_session_path, method: :delete %>
+        <% end %>
+      </nav>
+    </header>
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
