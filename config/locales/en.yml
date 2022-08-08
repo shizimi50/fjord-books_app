@@ -1,15 +1,33 @@
 ---
 en:
-  show: "Show"
-  edit: "Edit"
-  destroy: "Destroy"
-  new: "New Book"
-  editing: "Editing Book"
-  back: "Back"
-  create: "Craete Book"
+  activerecord:
+    models:
+      book: Book
 
-  books: "Books"
-  title: "Title"
-  memo: "Memo"
-  author: "Author"
-  picture: "Picture"
+    attributes:
+      book:
+        title: Title
+        memo: Memo
+        author: Author
+        picture: Picture
+
+  helpers:
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}         
+
+  views:
+    show: "Show"
+    edit: "Edit"
+    destroy: "Destroy"
+    new: "New"
+    back: "Back"
+    delete_confirm: "Are you sure?"
+    title_new: "New %{name}"
+    title_edit: "Edit %{title}"
+
+  controllers:
+    notice_create: "%{title} was successfully created."
+    notice_update: "%{title} was successfully updated."
+    notice_destroy: "%{title} was successfully destroyed."

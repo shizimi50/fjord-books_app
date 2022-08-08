@@ -1,7 +1,7 @@
 <h1>
-    <%= t('new') %>
+    <%= t('views.title_new', name: Book.model_name.human) %>
 </h1>
 
 <%= render 'form' , book: @book %>
 
-    <%= link_to t('back'), books_path %>
+    <%= link_to t('views.back'), books_path %>
