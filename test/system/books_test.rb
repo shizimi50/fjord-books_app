@@ -14,9 +14,9 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'visiting book lists' do
     assert_selector 'h1', text: '本'
-    assert_text @book.title
-    assert_text @book.memo
-    assert_text @book.author
+    assert_text 'プロを目指す人のためのRuby入門'
+    assert_text '名著です!!'
+    assert_text '伊藤 淳一'
   end
 
   test 'show a Book' do
@@ -25,25 +25,25 @@ class BooksTest < ApplicationSystemTestCase
     assert_selector 'h1', text: '本の詳細'
     assert_text 'プロを目指す人のためのRuby入門'
     assert_text '名著です!!'
-    assert_text 'igaiga'
+    assert_text '伊藤 淳一'
   end
 
   test 'creating a Book' do
     visit books_url
     click_on '新規作成'
 
-    fill_in 'タイトル', with: 'Ruby on Rails'
-    fill_in 'メモ', with: 'Rails初学者向け'
-    fill_in '著者', with: 'Foo bar'
+    fill_in 'タイトル', with: '楽々ERDレッスン'
+    fill_in 'メモ', with: '実在する帳票から本当に使えるテーブル設計を導く画期的な本！'
+    fill_in '著者', with: '羽生 章洋'
     click_on '登録する'
     assert_text '本が作成されました。'
-    assert_text 'Ruby on Rails'
-    assert_text 'Rails初学者向け'
-    assert_text 'Foo bar'
+    assert_text '楽々ERDレッスン'
+    assert_text '実在する帳票から本当に使えるテーブル設計を導く画期的な本！'
+    assert_text '羽生 章洋'
   end
 
   test 'updating a Book' do
-    visit edit_book_url(@book.id)
+    visit edit_book_url(@book)
     fill_in 'タイトル', with: 'Ruby超入門'
     fill_in 'メモ', with: 'すごくわかりやすい'
     fill_in '著者', with: 'igaiga'
@@ -57,10 +57,16 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'destroying a Book' do
     visit books_url
+    assert_text 'プロを目指す人のためのRuby入門'
+    assert_text '名著です!!'
+    assert_text '伊藤 淳一'
     page.accept_confirm do
       click_on '削除', match: :first
     end
 
+    assert_no_text 'プロを目指す人のためのRuby入門'
+    assert_no_text '名著です!!'
+    assert_no_text '伊藤 淳一'
     assert_text '本が削除されました。'
   end
 end
