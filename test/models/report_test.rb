@@ -15,7 +15,6 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#created_on' do
-    assert_not_equal DateTime.tomorrow.to_date, @report.created_on
-    assert_equal DateTime.now.to_date, @report.created_on
+    assert_equal Date.current.to_date, @report.created_on
   end
 end
