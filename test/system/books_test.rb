@@ -20,7 +20,7 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test 'show a Book' do
-    visit book_url(@book.id)
+    visit book_url(@book)
 
     assert_selector 'h1', text: '本の詳細'
     assert_text 'プロを目指す人のためのRuby入門'
