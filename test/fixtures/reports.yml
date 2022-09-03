@@ -2,7 +2,5 @@
 
 report:
   user: alice
-  title: 日報1
-  content: 日報1の内容
-
-
+  title: Railsでテストを書く#1
+  content: Railsでテストを書く（ハンズオン動画を視聴）。非常にわかりやすい解説だった。
