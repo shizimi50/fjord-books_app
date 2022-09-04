@@ -60,7 +60,6 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'destroying a Report' do
     visit reports_url
-    assert_text 'Alice'
     assert_text 'Railsでテストを書く#1'
 
     page.accept_confirm do
