@@ -58,15 +58,11 @@ class BooksTest < ApplicationSystemTestCase
   test 'destroying a Book' do
     visit books_url
     assert_text 'プロを目指す人のためのRuby入門'
-    assert_text '名著です!!'
-    assert_text '伊藤 淳一'
     page.accept_confirm do
       click_on '削除', match: :first
     end
 
     assert_no_text 'プロを目指す人のためのRuby入門'
-    assert_no_text '名著です!!'
-    assert_no_text '伊藤 淳一'
     assert_text '本が削除されました。'
   end
 end

@@ -66,7 +66,6 @@ class ReportsTest < ApplicationSystemTestCase
     page.accept_confirm do
       click_on '削除', match: :first
     end
-    assert_no_text 'Alice'
     assert_no_text 'Railsでテストを書く#1'
 
     assert_text '日報が削除されました。'
