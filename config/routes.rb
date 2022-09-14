@@ -3,5 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'books#index'
   resources :books
-  resources :users, only: %i(index show)
+  resources :users, only: %i(index show) do
+    resource :follows, only: %i(create destroy)
+    get :followings, on: :member # フォローしているユーザーの一覧
+    get :followers, on: :member # フォロワーの一覧
+  end
 end

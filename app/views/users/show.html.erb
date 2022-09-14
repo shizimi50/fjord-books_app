@@ -29,11 +29,29 @@
   <strong><%= User.human_attribute_name(:avatar) %>:</strong>
   <% if @user.avatar.attached? %>
     <br>
-    <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150])%>
+    <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150]) %>
   <% end %>
 </p>
 
+<P>
+  <strong><%= t('views.common.following_count') %></strong> <%= link_to @user.followings.count, followings_user_path(@user) %>
+  <strong><%= t('views.common.follower_count') %></strong> <%= link_to @user.followers.count, followers_user_path(@user) %>
+</P>
+
 <% if current_user == @user %>
-  <%= link_to t('views.common.edit'), edit_user_registration_path %> |
+<% else %>
+  <% if current_user.following?(@user) %>
+    <%= link_to user_follows_path(@user), method: :delete do %>
+      <button><%= t('views.common.unfollow') %></button><br>
+    <% end %>
+  <% else %>
+    <%= link_to user_follows_path(@user), method: :post do %>
+      <button><%= t('views.common.follow') %></button><br>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if current_user == @user %>
+  <%= link_to t('views.common.edit'), edit_user_registration_path %>
 <% end %>
 <%= link_to t('views.common.back'), users_path %>

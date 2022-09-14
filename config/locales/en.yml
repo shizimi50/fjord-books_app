@@ -220,10 +220,16 @@ en:
       destroy: Destroy
       new: "New record"
       back: Back
+      follow: Follow
+      unfollow: Unfollow
+      following_count: Following
+      follower_count: Follower
       delete_confirm: "Are you sure?"
       title_new: "New %{name}"
       title_edit: "Editing %{name}"
       title_show: "%{name} Details"
+      titile_followers: Followers
+      titile_followings: Followings
       sign_out: "Sign out"
       minimum_length: "%{length} characters minimum"
   controllers:
