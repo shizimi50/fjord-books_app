@@ -245,6 +245,8 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+      error_update: "権限がなく、更新できませんでした。"
+      error_destroy: "権限がなく、削除できませんでした。"
   relationships:
     create:
       notice: "フォローしました。"

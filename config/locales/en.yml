@@ -253,6 +253,8 @@ en:
       notice_create: "%{name} was successfully created."
       notice_update: "%{name} was successfully updated."
       notice_destroy: "%{name} was successfully destroyed."
+      error_update: "You don't have authority, couldn't update."
+      error_destroy: "You don't have authority, couldn't destroy."
   relationships:
     create:
       notice: "Successfully followed."
