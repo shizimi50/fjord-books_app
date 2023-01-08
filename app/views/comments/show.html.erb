@@ -17,7 +17,7 @@
         <% else %>
           <td><%= comment.user.email %></td>
         <% end %>
-        <td><%= comment.created_at.to_s(:datetime_jp) %></td>
+        <td><%= l comment.created_at %></td>
       </tr>
     <% end %>
   </tbody>
