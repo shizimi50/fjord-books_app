@@ -2,7 +2,7 @@
 
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
     if @comment.save
       redirect_to @comment.commentable, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
@@ -13,6 +13,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:description, :commentable_type, :commentable_id).merge(user_id: current_user.id)
+    params.require(:comment).permit(:description, :commentable_type, :commentable_id)
   end
 end

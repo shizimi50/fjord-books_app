@@ -2,7 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: :show
-  before_action :permitted_report, only: %i[edit update destroy]
+  before_action :set_permitted_report, only: %i[edit update destroy]
 
   def index
     @reports = Report.all
@@ -14,13 +14,13 @@ class ReportsController < ApplicationController
   end
 
   def new
-    @report = Report.new
+    @report = current_user.reports.new
   end
 
   def edit; end
 
   def create
-    @report = Report.new(report_params)
+    @report = current_user.reports.new(report_params)
 
     if @report.save
       redirect_to report_path(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human)
@@ -48,9 +48,8 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
   end
 
-  def permitted_report
-    @reports = current_user.reports
-    @report = @reports.find_by(id: params[:id])
+  def set_permitted_report
+    @report = current_user.reports.find(params[:id])
     return if @report
 
     flash[:alert] = t('controllers.common.error', name: Report.model_name.human)
