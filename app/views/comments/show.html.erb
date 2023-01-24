@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @comments.each do |comment| %>
+    <% @comments.preload(:user).each do |comment| %>
       <tr>
         <td><%= comment.description %></td>
         <% if comment.user.name.present? %>
