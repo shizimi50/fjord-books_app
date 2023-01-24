@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_12_18_093622) do
 
   create_table "comments", force: :cascade do |t|
     t.text "description"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.string "commentable_type", null: false
     t.integer "commentable_id", null: false
     t.datetime "created_at", precision: 6, null: false
