@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @reports.preload(:user).each do |report| %>
+    <% @reports.each do |report| %>
       <tr>
         <td><%= report.title %></td>
         <td><%= report.description %></td>

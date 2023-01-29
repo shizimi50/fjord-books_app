@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
   before_action :set_permitted_report, only: %i[edit update destroy]
 
   def index
-    @reports = Report.all
+    @reports = Report.preload(:user).all
   end
 
   def show
@@ -45,15 +45,11 @@ class ReportsController < ApplicationController
   private
 
   def set_report
-    @report = Report.find(params[:id])
+    @report = Report.preload(:user).find(params[:id])
   end
 
   def set_permitted_report
     @report = current_user.reports.find(params[:id])
-    return if @report
-
-    flash[:alert] = t('controllers.common.error', name: Report.model_name.human)
-    redirect_to reports_path
   end
 
   def report_params
