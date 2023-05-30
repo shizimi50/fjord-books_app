@@ -2,6 +2,7 @@ en:
   activerecord:
     models:
       book: Book  #g
+      report: Report
 
     attributes:
       book:
@@ -9,6 +10,15 @@ en:
         memo: Memo  #g
         picture: Picture  #g
         title: Title  #g
+      report:
+        title: Title 
+        description: Description
+        created_by: Created_by
+        created_at: Created_at
+      comment:
+        description: Comment
+        user_id: User
+        created_at: Created_at
       user:
         name: Name
         postal_code: Postal code

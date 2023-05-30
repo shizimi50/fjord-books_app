@@ -1,0 +1,13 @@
+<%= form_with(model: comment, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <%= form.hidden_field :commentable_id, value: commentable.id %>
+  <%= form.hidden_field :commentable_type, value: commentable.class %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
